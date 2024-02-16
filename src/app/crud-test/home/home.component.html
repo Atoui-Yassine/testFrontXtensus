@@ -1,0 +1,41 @@
+<div class="container-xl">
+    <div class="table_responsive">
+        <div class="table_title">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2>Gérer <b> Personnes </b></h2>
+                </div>
+                <div class="col-sm-6">
+                    <a class="btn btn-success" (click)="openPopup()"><i class="bi bi-plus-circle"></i> <span>Add New Personne</span></a>
+                </div>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    
+                    <th>Nom</th>
+                    <th>Prenome</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of allPersonn">
+                    <td>{{item.nom}}</td>
+                    <td>{{item.prenom}}</td>
+                    <td>{{item.mail}}</td>
+                    <td class="btnactions">
+                        <a  class="view" data-toggle="modal" (click)="openPopupDetail(item.id)"><i class="bi bi-eye"></i></a>
+                        <a  class="edit" data-toggle="modal" (click)="openPopupEDit(item.id)"><i class="bi bi-pencil"></i></a>
+                        <a  class="delete" data-toggle="modal" (click)="deleteByid(item.id)"><i class="bi bi-trash"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<app-add-personne></app-add-personne>
+<app-detail-personne></app-detail-personne>
+<app-edit-personne></app-edit-personne>

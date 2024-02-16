@@ -1,0 +1,31 @@
+<div class="popup" *ngIf="isOpendetail">
+    <button class="close-button" (click)="closePopup()">Close</button>
+    <div class="popup-content">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Prenome</th>
+                    <th>Email</th>
+                    <th>Tel</th>
+                    <th>Governement</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr>
+                    
+                    <td>{{personne?.id}}</td>
+                    <td>{{personne?.nom}}</td>
+                    <td>{{personne?.prenom}}</td>
+                    <td>{{personne?.mail}}</td>
+                    <td>{{personne?.tel}}</td>
+                    <td>{{personne?.gouvernement?.nomGouvernement}}</td>
+                </tr>
+               
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="popup" *ngIf="isOpenEdit">
+    <button class="close-button" (click)="closePopup()">Close</button>
+    <div class="popup-content">
+        <form [formGroup]="personneForm"  (ngSubmit)=" onSubmit() ">
+            <div>
+                <label for="nom">Nom :</label>
+                <input type="text" id="nom" formControlName="nom" placeholder="nom" >
+                <div class="error" *ngIf="personneForm.get('nom')?.hasError('required')">
+                  Le Nom est requis
+                  </div>
+                  <div class="error" *ngIf="personneForm.get('nom')?.hasError('minlength')">
+                    Le Nom doit contenir au moins 3 caractères.
+                  </div>
+                  <div class="error" *ngIf="personneForm.get('nom')?.hasError('maxlength')">
+                    Le Nom ne peut pas dépasser 20 caractères.
+                  </div>
+              </div>
+              <div>
+                <label for="prenom">Prenom :</label>
+                <input type="text" id="prenom" formControlName="prenom"  >
+                <div class="error" *ngIf="personneForm.get('prenom')?.hasError('required')">
+                  Le Prenom est requis.
+                </div>
+                <div class="error" *ngIf="personneForm.get('prenom')?.hasError('minlength')">
+                  Le Prenom doit contenir au moins 3 caractères.
+                </div>
+                <div class="error" *ngIf="personneForm.get('prenom')?.hasError('maxlength')">
+                  Le Prenom ne peut pas dépasser 20 caractères.
+                </div>
+              </div>
+              <div>
+                <label for="mail">Mail :</label>
+                <input type="text" id="mail" formControlName="mail"  required>
+                
+              </div>
+              <div>
+                <label for="tel">Tel :</label>
+                <input type="text" id="tel" formControlName="tel"  required>
+                
+              </div>
+              <div>
+                <label for="gouvernement">Gouvernement</label>
+                <select name="gouvernement" id="gouvernement" formControlName="gouvernementID">
+                    <option value="0">--</option>
+                    <option *ngFor="let gouvernement of allGouvernement" [value]="gouvernement.id">{{ gouvernement.nomGouvernement }}</option>
+                    
+                  </select>
+              </div>
+              <button type="submit" [disabled]=""> Save</button>
+        </form>
+      
+
+    </div>
+</div>

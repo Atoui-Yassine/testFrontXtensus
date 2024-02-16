@@ -1,0 +1,50 @@
+<div class="popup" *ngIf="isOpen" >
+    <button class="close-button" (click)="closePopup()">Close</button>
+    <div class="popup-content">
+
+        <form [formGroup]="addpersonnForm" (ngSubmit)=" onSubmit() ">
+            <div>
+                <label for="nom">Nom :</label>
+                <input type="text" id="nom" formControlName="nom" >
+                <div class="error" *ngIf="addpersonnForm.get('nom')?.hasError('required')">
+                  Le Nom est requis
+                  </div>
+                  <div class="error" *ngIf="addpersonnForm.get('nom')?.hasError('minlength')">
+                    Le Nom doit contenir au moins 3 caractères.
+                  </div>
+                  <div class="error" *ngIf="addpersonnForm.get('nom')?.hasError('maxlength')">
+                    Le Nom ne peut pas dépasser 20 caractères.
+                  </div>
+              </div>
+              <div>
+                <label for="prenom">Prenom :</label>
+                <input type="text" id="prenom" formControlName="prenom"  >
+                <div class="error" *ngIf="addpersonnForm.get('prenom')?.hasError('required')">
+                  Le Prenom est requis.
+                </div>
+                <div class="error" *ngIf="addpersonnForm.get('prenom')?.hasError('minlength')">
+                  Le Prenom doit contenir au moins 3 caractères.
+                </div>
+                <div class="error" *ngIf="addpersonnForm.get('prenom')?.hasError('maxlength')">
+                  Le Prenom ne peut pas dépasser 20 caractères.
+                </div>
+              </div>
+              <div>
+                <label for="mail">Mail :</label>
+                <input type="text" id="mail" formControlName="mail"  >
+                <div class="error" *ngIf="addpersonnForm.get('mail')?.hasError('email')">
+                  Veuillez entrer une adresse email valide.
+                </div>
+              </div>
+              <div>
+                <label for="tel">Tel :</label>
+                <input type="text" id="tel" formControlName="tel"  >
+                <div class="error" *ngIf="addpersonnForm.get('tel')?.hasError('minlength')">
+                 le numéro de téléphone non valide
+                </div>
+              </div>
+              
+              <button type="submit" [disabled]="" > Save</button>
+        </form>
+    </div>
+</div>
